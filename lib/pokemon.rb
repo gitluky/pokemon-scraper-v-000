@@ -17,7 +17,6 @@ class Pokemon
   end
 
   def self.find(primary_key, db)
-    SQLRunner.new(db).execute_create_hp_column
     pokemon_arr = db.execute("SELECT * FROM pokemon WHERE id = ?", primary_key).flatten
     new_pokemon = Pokemon.new(id: pokemon_arr[0], name: pokemon_arr[1], type: pokemon_arr[2], hp: pokemon_arr[3], db: db)
   end
